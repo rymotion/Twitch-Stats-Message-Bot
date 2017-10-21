@@ -71,20 +71,18 @@ passport.use('twitch', new OAuth2Strategy({
   function(accessToken, refreshToken, profile, done) {
     profile.accessToken = accessToken;
     profile.refreshToken = refreshToken;
-    // var spawn = require("pyton-process").spawn;
-    // var process = spawn('python', ["./chatbot.py", 
-    // req.query.client_id,
-    // req.query.token,
-    // req.query.username,
-    // req.query.channel
-    // ]);
+    
+
     // Securely store user profile in your DB
     //User.findOrCreate(..., function(err, user) {
     //  done(err, user);
     //});
-
+    // if (state == true) {
+    //   console.log('User authenticated.');
+    // }
     done(null, profile);
   }
+
 ));
 
 // Set route to start OAuth link, this is where you define scopes to request
@@ -115,5 +113,5 @@ app.get('/', function (req, res) {
 
 app.listen(3000, function () {
   console.log('Twitch auth sample listening on port 3000!')
-  // console.log('user: %s\nlogo: %s', display_name.c_str(), logo.c_str());
+  console.log('Waiting for user to authenticate.')
 });
